@@ -1,1 +1,27 @@
-<h2><%= link_to post.title, post_path(post) %></h2>
+<article>
+
+	<section class="head">
+		
+		<h2><%= link_to post.title, post_path(post) %></h2>
+
+<!-- Accountability blank category -->
+
+		<% if post.category.present? %>
+
+			<%= link_to post.category.name, post.category %>
+
+		<% end %>
+
+		<%= link_to 'Edit', edit_post_path(post) %>
+
+		<%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
+
+	</section>
+
+	<section class="preview">
+		
+		<%= post.preview %>
+
+	</section>
+
+</article>

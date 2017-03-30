@@ -7,6 +7,11 @@ gem 'rails', '3.1.0.rc8'
 
 gem 'sqlite3'
 gem 'strong_parameters'
+gem 'ancestry'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -14,6 +19,8 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0.rc"
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
+  gem 'bootstrap', '~> 4.0.0.alpha6'
+  gem 'bootstrap-sass', '~> 3.1.0'
 end
 
 gem 'jquery-rails'

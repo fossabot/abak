@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
 	# show just one post
 	def show
-
+		
 	end
 
 	# action new for create new article
@@ -21,10 +21,11 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new(post_params)
 
-		# check error and redirect to new article
+		# check error and redirect to new article with flash message
 		if @post.save
-			redirect_to @post
+			redirect_to @post, :flash => { :success =>  "Article create success" }
 		else
+			flash.now[ :danger ] = "Error create article"
 			render :new
 		end
 
@@ -38,19 +39,20 @@ class PostsController < ApplicationController
 	# action update article
 	def update
 
-		# check error and redirect to change article
+		# check error and redirect to change article with flash message
 		if @post.update_attributes(post_params)
-			redirect_to @post
+			redirect_to @post, :flash => { :success =>  "Article update success" }
 		else
+			flash.now[ :danger ] = "Error updating article"
 			render :edit
 		end
 
 	end
 
-	# action destroy for delete article and redirect to homepage
+	# action destroy for delete article with flash message and redirect to homepage
 	def destroy
 		@post.destroy
-		redirect_to posts_path
+		redirect_to posts_path, :flash => { :success =>  "Article delete success" }
 	end
 
 
@@ -63,7 +65,7 @@ class PostsController < ApplicationController
 
 	# private method with field limitation
 	def post_params
-		params.require(:post).permit(:title, :preview, :body)
+		params.require(:post).permit(:title, :preview, :body, :category_id)
 	end
 
 end
