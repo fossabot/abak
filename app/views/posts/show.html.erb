@@ -8,8 +8,8 @@
 
 <% end %>
 
-<%= link_to 'change', edit_post_path(@post) %>
+<%= link_to t('form.edit'), edit_post_path(@post) %>
 
-<%= link_to 'delete', post_path(@post), method: :delete, data: { confirm: "Are you sure" } %>
+<%= link_to t('form.delete'), post_path(@post), method: :delete, data: { confirm: t('questionSure') } %>
 
 <p><%= @post.body %></p>

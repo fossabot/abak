@@ -2,4 +2,45 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  title: "Abak"
   hello: "Hello world"
+  questionSure: "Are you sure?"
+
+  cat:
+    add: "Add category"
+    new: "Create new category"
+    edit: "Change category"
+    notFound: "Category is not found"
+
+    table:
+      name: "Name of Category"
+      parent: "Name of Parent Category"
+      add: "Add"
+      edit: "Edit"
+      delete: "Delete"
+
+  post:
+    index: "Posts"
+    new: "New Article"
+    edit: "Editing articles"
+    notFound: "Page not found"
+
+  form:
+    accept: "Accept"
+    cancel: "Cancel"
+    save: "Save"
+    back: "Back"
+    edit: "Edit"
+    add: "Add"
+    delete: "Delete"
+  
+  activerecord:
+    attributes:
+      category:
+        name: "Name"
+        parent_id: "Parent"
+      post:
+        title: "Title"
+        preview: "Preview"
+        body: "Body"
+        category_id: "category"

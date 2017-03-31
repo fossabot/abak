@@ -2,6 +2,8 @@
 
 <h1><%= @category.name %></h1>
 
+<%= link_to t('cat.add'), add_category_path(@categories) %>
+
 <section id="posts">
 
 	<%= render @posts %>
