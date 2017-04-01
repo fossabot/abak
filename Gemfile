@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'strong_parameters'
 gem 'ancestry'
 gem 'jquery-rails'
+gem 'friendly_id'
 
 source 'https://rails-assets.org' do
 
@@ -48,5 +49,6 @@ group :development, :test do
 
 	gem 'rspec-rails', '~> 3.5'
 	gem 'factory_girl_rails'
+	gem 'rspec-context-private'
 
 end

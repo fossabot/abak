@@ -25,7 +25,6 @@ RSpec.describe PostsController, :type => :controller do
 
 			post1, post2 = create(:post), create(:post)
 			get :index
-
 			expect(assigns(:posts)).to match_array([post1, post2])
 
 		end
@@ -97,17 +96,30 @@ RSpec.describe PostsController, :type => :controller do
 
 	describe "PUT #update/:id" do
 
-		# need to change this because it does not work correctly
-		it "should re-render edit template on failed update" do
+		it "redirects to updated article if validation was true" do
+
 			post = create(:post)
-			put :update, {
-				:id => post.id, 
-				:title => "new title", 
-				:preview => "new preview", 
-				:body => "new body",
-				:category_id => ""
+			put :update, id: post.id, post: post.attributes = {
+				title: "new title", 
+				preview: "new preview", 
+				body: "new body",
+				category_id: ""
 			}
-			expect(response).to have_http_status(400)
+			expect(response).to redirect_to(assigns(:post))
+
+		end
+
+		it "should re-render edit template on failed update" do
+
+			post = create(:post)
+			put :update, id: post.id, post: post.attributes = {
+				title: "", 
+				preview: "new preview", 
+				body: "new body",
+				category_id: ""
+			}
+			expect(response).to render_template("edit")
+
 		end
 
 	end
@@ -119,6 +131,26 @@ RSpec.describe PostsController, :type => :controller do
 			post = create(:post)
 			delete :destroy, id: post.id
 			expect(response).to redirect_to(posts_path)
+
+		end
+
+	end
+
+	describe "set_post", :private do
+
+		it 'just call private method' do
+
+			expect{subject.set_post}.to raise_error(NoMethodError)
+
+		end
+
+	end
+
+	describe "post_params", :private do
+
+		it 'method for limitation of params[something] just call' do
+
+			expect{subject.post_params}.to raise_error(NoMethodError)
 
 		end
 

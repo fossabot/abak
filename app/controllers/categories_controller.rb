@@ -53,10 +53,21 @@ class CategoriesController < ApplicationController
 			redirect_to @category, :flash => { :success =>  "Category create success" }
 
 		else
-	
-			@categories = Category.where("id != #{@category.id}").order(:name)
-			flash.now[ :danger ] = "Error create category"
-			render :new
+
+			# try to catch adding error
+			if @categories.nil?
+
+				@categories = Category.order(:name)
+				flash.now[ :danger ] = "Error adding category"
+				render :add
+
+			else
+
+				@categories = Category.where("id != #{@category.id}").order(:name)
+				flash.now[ :danger ] = "Error create category"
+				render :new
+
+			end
 
 		end
 
@@ -65,23 +76,39 @@ class CategoriesController < ApplicationController
 	# action edit for editing category
 	def edit
 
-		@categories = Category.where("id != #{@category.id}").order(:name)
+		unless @category
+
+			render text: t('cat.notFound'), status: 404
+
+		else
+
+			@categories = Category.where("id != #{@category.id}").order(:name)
+
+		end
 
 	end
 
 	# action update category
 	def update
 
-		# check error and redirect to change category with flash message
-		if @category.update_attributes(category_params)
+		unless @category
 
-			redirect_to categories_path, :flash => { :success =>  "Category update success" }
+			render text: t('cat.notFound'), status: 404
 
 		else
 
-			@categories = Category.where("id != #{@category.id}").order(:name)
-			flash.now[ :danger ] = "Error updating category"
-			render :edit
+			# check error and redirect to change category with flash message
+			if @category.update_attributes(category_params)
+
+				redirect_to categories_path, :flash => { :success =>  "Category update success" }
+
+			else
+
+				@categories = Category.where("id != #{@category.id}").order(:name)
+				flash.now[ :danger ] = "Error updating category"
+				render :edit
+	
+			end
 
 		end
 
@@ -90,8 +117,16 @@ class CategoriesController < ApplicationController
 	# action destroy for delete category with flash message and redirect to homepage
 	def destroy
 
-		@category.destroy
-		redirect_to categories_path, :flash => { :success =>  "Category delete success" }
+		unless @category
+
+			render text: t('cat.notFound'), status: 404
+
+		else
+
+			@category.destroy
+			redirect_to categories_path, :flash => { :success =>  "Category delete success" }
+
+		end
 
 	end
 

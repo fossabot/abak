@@ -5,3 +5,13 @@
 require File.expand_path('../config/application', __FILE__)
 
 Abak::Application.load_tasks
+
+desc "add_slug by friendly_id for existing model"
+
+task :add_slug do
+
+	# use rails console for do this
+	Post.find_each(&:save)
+	Category.find_each(&:save)
+
+end
