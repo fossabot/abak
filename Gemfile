@@ -10,6 +10,7 @@ gem 'strong_parameters'
 gem 'ancestry'
 gem 'jquery-rails'
 gem 'friendly_id'
+gem 'redcarpet'
 
 source 'https://rails-assets.org' do
 

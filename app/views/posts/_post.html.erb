@@ -2,7 +2,7 @@
 
 	<section class="head">
 		
-		<h2><%= link_to post.title, post_path(post) %></h2>
+		<h2><%= link_to post.title, [@category, post] %></h2>
 
 <!-- Accountability blank category -->
 
@@ -12,9 +12,9 @@
 
 		<% end %>
 
-		<%= link_to t('form.edit'), edit_post_path(post) %>
+		<%= link_to t('form.edit'), edit_category_post_path(@category, post) %>
 
-		<%= link_to t('form.delete'), post_path(post), method: :delete, data: { confirm: t('questionSure') } %>
+		<%= link_to t('form.delete'), [@category, post], method: :delete, data: { confirm: t('questionSure') } %>
 
 	</section>
 

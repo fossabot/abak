@@ -19,4 +19,23 @@ module ApplicationHelper
 
 	end
 
+	def markdown(content)
+
+		# custom renderer class for replace symbols
+		renderer = CustomRenderer.new(hard_wrap: true, filter_html: true)
+
+		# options for save from smart script
+		options = {
+			autolink: true,
+			no_intra_emphasis: true,
+			disable_indented_code_blocks: true,
+			fenced_code_blocks: true,
+			lax_html_blocks: true,
+			strikethrough: true,
+			superscript: true
+		}
+		Redcarpet::Markdown.new(renderer, options).render(content).html_safe
+
+	end
+
 end
