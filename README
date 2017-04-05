@@ -1,3 +1,5 @@
+# In the name of the category Russian characters are allowed, but the name can not entirely consist of only Russian characters
+<----------------------------------------------------------------------->
 mifrill@mifrill-VirtualBox:/media/hdd/Ruby/192/abak$ ab -c 100 -n 10000 http://192.168.1.34:3000/categories/name1-name2
 This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/

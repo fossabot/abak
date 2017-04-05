@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Abak::Application.routes.draw do
    
   # The priority is based upon order of creation:

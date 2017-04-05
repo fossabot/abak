@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 LOG_LEVEL = 4
 
 #   1 - Creating a tree

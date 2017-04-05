@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ControllerMacros
 
 	def self.included(base)

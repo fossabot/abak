@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'rails_helper'
 
 describe Post do
@@ -18,10 +19,10 @@ describe Post do
 
 	end
 
-	it "renders italics from '\\' for body" do
+	it "renders italics from '\\' for body (standart method with emphasis)" do
 
-		post.update_attribute(:body, "\\Hello\\")
-		expect(markdown post.body).to eql "<i>Hello</i>\n"
+		post.update_attribute(:body, "*Hello*")
+		expect(markdown post.body).to eql "<p><i>Hello</i></p>\n"
 
 	end
 

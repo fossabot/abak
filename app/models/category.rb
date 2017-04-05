@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Category < ActiveRecord::Base
 
 	extend FriendlyId
@@ -6,7 +7,7 @@ class Category < ActiveRecord::Base
 	has_many :posts
 	validates :name, presence: true
 	validates_associated :posts
-	validates_format_of :name, :with => /\A[a-zA-Z0-9]+\z/, :message => "Only letters and numbers allowed"
+	validates_format_of :name, :with => /\A[a-zA-Z0-9а-яёА-ЯЁ\s\-]+\z/, :message => "Only letters and numbers allowed"
 	has_ancestry
 	before_save :update_slug
 	
