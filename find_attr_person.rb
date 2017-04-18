@@ -7,491 +7,491 @@ LOG_LEVEL = 4
 
 def log(txt, lvl)
 
-	if lvl >= LOG_LEVEL
+    if lvl >= LOG_LEVEL
 
-		p txt
+        p txt
 
-	end
+    end
 
 end
 
 # class Person
 class Person
 
-	attr_reader :age, :height, :weight, :salary
+    attr_reader :age, :height, :weight, :salary
 
-	AGE_MAX = 100
-	HEIGHT_MAX = 200
-	WEIGHT_MAX = 200
-	SALARY_MAX = 10**6
+    AGE_MAX = 100
+    HEIGHT_MAX = 200
+    WEIGHT_MAX = 200
+    SALARY_MAX = 10**6
 
-	def initialize(age, salary, height, weight)
+    def initialize(age, salary, height, weight)
 
-		raise ValueError unless age.between?(0, AGE_MAX)
-		@age = age
+        raise ValueError unless age.between?(0, AGE_MAX)
+        @age = age
 
-		raise ValueError unless salary.between?(0, SALARY_MAX)
-		@salary = salary
+        raise ValueError unless salary.between?(0, SALARY_MAX)
+        @salary = salary
 
-		raise ValueError unless age.between?(0, HEIGHT_MAX)
-		@height = height
+        raise ValueError unless age.between?(0, HEIGHT_MAX)
+        @height = height
 
-		raise ValueError unless age.between?(0, WEIGHT_MAX)
-		@weight = weight
+        raise ValueError unless age.between?(0, WEIGHT_MAX)
+        @weight = weight
 
-	end
+    end
 
-	def to_s
+    def to_s
 
-		"Person #{ @age } y/o [h: #{ @height }  w: #{ @weight }] have salary " +
-			"#{ @salary }."
+        "Person #{ @age } y/o [h: #{ @height }  w: #{ @weight }] have salary " +
+            "#{ @salary }."
 
-	end
+    end
 
-	def get_by_alias(a)
+    def get_by_alias(a)
 
-		case a
+        case a
 
-		when "a"
-			return @age
-		when "h"
-			return @height
-		when "w"
-			return @weight
-		when "s"
-			return @salary
+        when "a"
+            return @age
+        when "h"
+            return @height
+        when "w"
+            return @weight
+        when "s"
+            return @salary
 
-		end
+        end
 
-	end
+    end
  
-	def index
+    def index
 
-		idx = ""
+        idx = ""
 
-		data = [[AGE_MAX, @age], [HEIGHT_MAX, @height],
-			[WEIGHT_MAX, @weight], [SALARY_MAX, @salary]]
+        data = [[AGE_MAX, @age], [HEIGHT_MAX, @height],
+            [WEIGHT_MAX, @weight], [SALARY_MAX, @salary]]
 
-		data.each do |param|
+        data.each do |param|
 
-			idx += Person.index_param(param[1], param[0])
+            idx += Person.index_param(param[1], param[0])
 
-		end
+        end
 
-		log("Index: #{ idx }", 2)
+        log("Index: #{ idx }", 2)
 
-		idx
+        idx
 
-	end
+    end
 
-	# @static
-	def self.index_param(param, max)
+    # @static
+    def self.index_param(param, max)
 
-		# Borders ASCII-Latin
-		indexstartchr = 97
-		indexendchr = 122
+        # Borders ASCII-Latin
+        indexstartchr = 97
+        indexendchr = 122
 
-		# Group (character code) = val/(MAX/alphabet_len)
-		step = max / (indexendchr - indexstartchr + 1)
-		group = (param/step)
+        # Group (character code) = val/(MAX/alphabet_len)
+        step = max / (indexendchr - indexstartchr + 1)
+        group = (param/step)
 
-		# Correction for integer division
-		if group > 25
+        # Correction for integer division
+        if group > 25
 
-			group = 25
+            group = 25
 
-		end
+        end
 
-		idx = (group + indexstartchr).chr
+        idx = (group + indexstartchr).chr
 
-	end
+    end
 
 end
 
 # class QueryParser
 class QueryParser
 
-	attr_reader :query
+    attr_reader :query
 
-	def initialize(query)
+    def initialize(query)
 
-		q = query.gsub("  ", "").gsub(" =", "=").gsub("= ", "=").split(" ")
-		raise ValueError unless q.size < 5
+        q = query.gsub("  ", "").gsub(" =", "=").gsub("= ", "=").split(" ")
+        raise ValueError unless q.size < 5
 
-		@query = {}
+        @query = {}
 
-		q.each do |_q|
+        q.each do |_q|
 
-			# k=v => [k, v]
-			_qs = _q.split("=")
-			raise ValueError unless _qs.size == 2
+            # k=v => [k, v]
+            _qs = _q.split("=")
+            raise ValueError unless _qs.size == 2
 
-			# n => [n], m..n => [m, n]
-			v = _qs[1].split("..")
-			raise ValueError unless v.size < 3
+            # n => [n], m..n => [m, n]
+            v = _qs[1].split("..")
+            raise ValueError unless v.size < 3
 
-			# Not a number
-			v.each do |_v|
+            # Not a number
+            v.each do |_v|
 
-				raise ValueError unless _v.to_i.is_a? Integer
+                raise ValueError unless _v.to_i.is_a? Integer
 
-			end
+            end
 
-			raise ValueError unless "ahws".include?_qs[0] # No parameter
-			raise ValueError unless !@query[_qs[0]] # Parameter repeat
+            raise ValueError unless "ahws".include?_qs[0] # No parameter
+            raise ValueError unless !@query[_qs[0]] # Parameter repeat
 
-			@query[_qs[0]] = v
+            @query[_qs[0]] = v
 
-		end
+        end
 
-	end
+    end
 
-	def to_s
+    def to_s
 
-		@query.to_s
+        @query.to_s
 
-	end
+    end
 
 end
 
 # class Node
 class Node
 
-	attr_accessor :key, :parent, :value, :childs
+    attr_accessor :key, :parent, :value, :childs
 
-	def initialize(*args)
+    def initialize(*args)
 
-		@key = args[0]
-		@parent = args[1]
-		@value = []#args[2]
-		@childs = args[3]
+        @key = args[0]
+        @parent = args[1]
+        @value = []#args[2]
+        @childs = args[3]
 
-	end
+    end
 
-	def to_s
+    def to_s
 
-		"#{ @parent } -> #{ @key }"
+        "#{ @parent } -> #{ @key }"
 
-	end
+    end
 
 end
 
 # class Tree
 class Tree
 
-	def initialize
+    def initialize
 
-		log("Create Tree", 1)
-		@root = Node.new("ROOT", nil, nil, [])
-		init_tree(@root)
+        log("Create Tree", 1)
+        @root = Node.new("ROOT", nil, nil, [])
+        init_tree(@root)
 
-	end
+    end
 
-	def alphabet
+    def alphabet
 
-		(97..122).to_a.map{|n| n.chr}
+        (97..122).to_a.map{|n| n.chr}
 
-	end
+    end
 
-	# Initializes an empty branch with an empty set of child nodes
-	def init_branch(node)
+    # Initializes an empty branch with an empty set of child nodes
+    def init_branch(node)
 
-		alphabet.each do |s|
+        alphabet.each do |s|
 
-			node.childs.push(Node.new(s, node, nil, []))
+            node.childs.push(Node.new(s, node, nil, []))
 
-		end
+        end
 
-	end
+    end
 
-	# Initializing the tree with empty branches
-	def init_tree(node)
+    # Initializing the tree with empty branches
+    def init_tree(node)
 
-		i = 0
-		t = node
+        i = 0
+        t = node
 
-		while t.parent
-			i += 1
-			t = t.parent
+        while t.parent
+            i += 1
+            t = t.parent
 
-		end
+        end
 
-		if i == 4
+        if i == 4
 
-			log("Root reached", 1)
-			return
+            log("Root reached", 1)
+            return
 
-		end
+        end
 
-		# Recursively fills node.childs with nodes with keys, giving back the newly created
-		# Node to fill in further. Exit from the recursion by the level of nesting = 4.
-		log("Init #{ node }", 1)
-		init_branch(node)
-		log("Create childs of #{ node }", 1)
-		node.childs.each do |n|
+        # Recursively fills node.childs with nodes with keys, giving back the newly created
+        # Node to fill in further. Exit from the recursion by the level of nesting = 4.
+        log("Init #{ node }", 1)
+        init_branch(node)
+        log("Create childs of #{ node }", 1)
+        node.childs.each do |n|
 
-			log("Create childs for #{ n }", 1)
-			init_tree(n)
+            log("Create childs for #{ n }", 1)
+            init_tree(n)
 
-		end
+        end
 
-	end
+    end
 
-	# From the values in the fields we build an index, and from the index we build a tree.
-	# The index is formed as a sequence of Latin characters. Length = 4.
-	# Each attribute can occupy only 1 index field, so the value can
-	# Accept 1 of 26 letters.
-	# 97-122: ord(a..z)
-	def add(person)
+    # From the values in the fields we build an index, and from the index we build a tree.
+    # The index is formed as a sequence of Latin characters. Length = 4.
+    # Each attribute can occupy only 1 index field, so the value can
+    # Accept 1 of 26 letters.
+    # 97-122: ord(a..z)
+    def add(person)
 
-		node = get(person.index)
-		node.value.push(person)
-		log(node, 2) 
+        node = get(person.index)
+        node.value.push(person)
+        log(node, 2) 
 
-	end
+    end
 
-	# Passing through a tree to a node with a given key
-	def get(key)
+    # Passing through a tree to a node with a given key
+    def get(key)
 
-		node = @root
-		key.each_char do |c|
-			node = node.childs[c.ord - 97]
+        node = @root
+        key.each_char do |c|
+            node = node.childs[c.ord - 97]
 
-		end
+        end
 
-		node
+        node
 
-	end
+    end
 
-	# Search for nodes on request. The symbol "*" means all the values in this position.
-	# The final collection of the result is carried out on the lower level
-	def extract(query)
+    # Search for nodes on request. The symbol "*" means all the values in this position.
+    # The final collection of the result is carried out on the lower level
+    def extract(query)
 
-		res = []
+        res = []
 
-		# Generating traversal paths is a list of four-level keys for generating
-		# All possible routes.
-		path_list = [[], [], [], []]
+        # Generating traversal paths is a list of four-level keys for generating
+        # All possible routes.
+        path_list = [[], [], [], []]
 
-		max = [Person::AGE_MAX, Person::HEIGHT_MAX, Person::WEIGHT_MAX,
-			Person::SALARY_MAX]
+        max = [Person::AGE_MAX, Person::HEIGHT_MAX, Person::WEIGHT_MAX,
+            Person::SALARY_MAX]
 
-		"ahws".each_char.with_index do |s, i|
+        "ahws".each_char.with_index do |s, i|
 
-			v = query.query[s]
+            v = query.query[s]
 
-			if v
+            if v
 
-				if v.size == 1
+                if v.size == 1
 
-					path_list[i] = [Person.index_param(v[0].to_i, max[i])]
+                    path_list[i] = [Person.index_param(v[0].to_i, max[i])]
 
-				else # size == 2
+                else # size == 2
 
-					l = Person.index_param(v[0].to_i, max[i])
-					r = Person.index_param(v[1].to_i, max[i])
-					path_list[i] = (l..r).to_a
+                    l = Person.index_param(v[0].to_i, max[i])
+                    r = Person.index_param(v[1].to_i, max[i])
+                    path_list[i] = (l..r).to_a
 
-				end
+                end
 
-			else
+            else
 
-				path_list[i] = alphabet
+                path_list[i] = alphabet
 
-			end
+            end
 
-		end
+        end
 
-		log(path_list, 3)
+        log(path_list, 3)
 
-		path_list[0].each do |z|
+        path_list[0].each do |z|
 
-				path_list[1].each do |o|
+                path_list[1].each do |o|
 
-					path_list[2].each do |t|
+                    path_list[2].each do |t|
 
-						path_list[3].each do |th|
+                        path_list[3].each do |th|
 
-							res.push(get(z + o + t + th))
+                            res.push(get(z + o + t + th))
 
-						end
+                        end
 
-					end
+                    end
 
-				end
+                end
 
-		end
+        end
 
-		res
+        res
 
-	end
+    end
 
 end
 
 # A wrapper for working with a tree and a search: adding and searching. class PersonPool
 class PersonPool
 
-	attr_reader :search_result, :last_query
+    attr_reader :search_result, :last_query
 
-	def initialize
+    def initialize
 
-		@search_result = []
-		@last_query = ""
-		@tr = Tree.new
+        @search_result = []
+        @last_query = ""
+        @tr = Tree.new
 
-	end
+    end
 
-	def add(person)
+    def add(person)
 
-		@tr.add(person)
+        @tr.add(person)
 
-	end
+    end
 
-	def get(q)
+    def get(q)
 
-		begin
+        begin
 
-			q = QueryParser.new(q.strip)
-			@search_result = []
-			@last_query = q
+            q = QueryParser.new(q.strip)
+            @search_result = []
+            @last_query = q
 
-			# Selecting Person from a node array with groups
-			@tr.extract(q).each do |person_node|
-				person_node.value.each do |person|
-					succ = true
-					q.query.each do |k, v|
-						p_v = person.get_by_alias(k)
+            # Selecting Person from a node array with groups
+            @tr.extract(q).each do |person_node|
+                person_node.value.each do |person|
+                    succ = true
+                    q.query.each do |k, v|
+                        p_v = person.get_by_alias(k)
 
-						if v.size == 1
+                        if v.size == 1
 
-							if p_v != v[0].to_i
+                            if p_v != v[0].to_i
 
-								succ = false
+                                succ = false
 
-								break
+                                break
 
-							end
+                            end
 
-						else
+                        else
 
-							if p_v < v[0].to_i || p_v > v[1].to_i
-								succ = false
-								break
+                            if p_v < v[0].to_i || p_v > v[1].to_i
+                                succ = false
+                                break
 
-							end
+                            end
 
-						end
+                        end
 
-					end
+                    end
 
-					@search_result.push(person) if succ
+                    @search_result.push(person) if succ
 
-				end
+                end
 
-			end
+            end
 
-		rescue
+        rescue
 
-			@search_result = -1
+            @search_result = -1
 
-		end
+        end
 
-	end
+    end
 
-	@search_result
+    @search_result
 
 end
 
 # class Main
 class Main
 
-	def initialize
+    def initialize
 
-		qnt = 10**3
-		puts "Generating #{ qnt } persons..."
-		
-		now = Time.now
-		@persons = PersonPool.new
-		puts "Tree created", Time.now - now
+        qnt = 10**3
+        puts "Generating #{ qnt } persons..."
+        
+        now = Time.now
+        @persons = PersonPool.new
+        puts "Tree created", Time.now - now
 
-		now = Time.now
+        now = Time.now
 
-		qnt.times do
+        qnt.times do
 
-			@persons.add(Person.new(rand(Person::AGE_MAX), rand(Person::SALARY_MAX),
-				rand(Person::HEIGHT_MAX), rand(Person::WEIGHT_MAX)))
+            @persons.add(Person.new(rand(Person::AGE_MAX), rand(Person::SALARY_MAX),
+                rand(Person::HEIGHT_MAX), rand(Person::WEIGHT_MAX)))
 
-		end
+        end
 
-		puts "Objects created", Time.now - now
-		puts
-		puts "Print \"help\" to view commands"
+        puts "Objects created", Time.now - now
+        puts
+        puts "Print \"help\" to view commands"
 
-		dialog
+        dialog
 
-	end
+    end
 
-	def dialog
+    def dialog
 
-		while true
+        while true
 
-			puts ">>"
-			cmd = gets.strip.downcase
+            puts ">>"
+            cmd = gets.strip.downcase
 
-			case cmd
+            case cmd
 
-			when "exit"
-				break
-			when "last"
-				puts @persons.last_query
-			when "help"
-				print_help
-			when "print"
-				print_result
-			else
+            when "exit"
+                break
+            when "last"
+                puts @persons.last_query
+            when "help"
+                print_help
+            when "print"
+                print_result
+            else
 
-				now = Time.now
-				@persons.get(cmd)
+                now = Time.now
+                @persons.get(cmd)
 
-				# Just see how quickly it will appear
-				sr = @persons.search_result
+                # Just see how quickly it will appear
+                sr = @persons.search_result
 
-				puts "Search in #{ Time.now - now }s. Result: " +
-					" #{ sr == -1? "Invalid query": sr.length }"
+                puts "Search in #{ Time.now - now }s. Result: " +
+                    " #{ sr == -1? "Invalid query": sr.length }"
 
-			end
+            end
 
-		end
+        end
 
-	end
+    end
 
-	def print_help
+    def print_help
 
-		puts "Usage:"
-		puts "\tparameters: [a]ge, [s]alary, [h]eight, [w]eight"
-		puts "\tvalues: int[10], range(10..50)"
-		puts "\tExample: a=30 h=50; s=10..20 w=30"
-		puts "Commands:"
-		puts "\texit: close program"
-		puts "\thelp: print this text"
-		puts "\tlast: print parsed last query"
-		puts "\tresult: print search result"
+        puts "Usage:"
+        puts "\tparameters: [a]ge, [s]alary, [h]eight, [w]eight"
+        puts "\tvalues: int[10], range(10..50)"
+        puts "\tExample: a=30 h=50; s=10..20 w=30"
+        puts "Commands:"
+        puts "\texit: close program"
+        puts "\thelp: print this text"
+        puts "\tlast: print parsed last query"
+        puts "\tresult: print search result"
 
-	end
+    end
 
-	def print_result
+    def print_result
 
-		if @persons.search_result == -1
+        if @persons.search_result == -1
 
-			puts "Invalid query"
+            puts "Invalid query"
 
-		else
+        else
 
-			puts @persons.search_result
+            puts @persons.search_result
 
-		end
+        end
 
-	end
+    end
 
 end
 

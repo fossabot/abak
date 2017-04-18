@@ -2,16 +2,16 @@
 # render italics bolder and link for markdown
 class CustomRenderer < Redcarpet::Render::HTML
 
-	def emphasis(text)
+  def emphasis(text)
 
-		"\<i>#{text}\</i>"
+    "\<i>#{text}\</i>"
 
-	end
+  end
 
-	def double_emphasis(text)
+  def double_emphasis(text)
 
-		"\<b>#{text}\</b>"
+    "\<b>#{text}\</b>"
 
-	end
+  end
 
 end

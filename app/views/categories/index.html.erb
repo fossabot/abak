@@ -2,58 +2,58 @@
 
 <div class="buttons_panel">
 
-	<%= link_to "New Category", new_category_path, class: 'btn btn-outline-primary btn-sm' %>
+    <%= link_to "New Category", new_category_path, class: 'btn btn-outline-primary btn-sm' %>
 
 </div>
 
 <section id="categories">
-	
-	<table class="table">
-		
-		<thead>
+    
+    <table class="table">
+        
+        <thead>
 
-			<tr>
+            <tr>
 
-				<th>#</th>
+                <th>#</th>
 
-				<th><%= t('cat.table.name') %></th>
+                <th><%= t('cat.table.name') %></th>
 
-				<th><%= t('cat.table.parent') %></th>
+                <th><%= t('cat.table.parent') %></th>
 
-				<th></th>
+                <th></th>
 
-			</tr>
+            </tr>
 
-		</thead>
+        </thead>
 
-		<tbody>
-			
-			<% @categories.each_with_index do |category, index| %>
-				
-				<tr>
+        <tbody>
+            
+            <% @categories.each_with_index do |category, index| %>
+                
+                <tr>
 
-					<td><%= index + 1 %></td>
+                    <td><%= index + 1 %></td>
 
-					<td><%= link_to category.name, category %></td>
+                    <td><%= link_to category.name, category %></td>
 
-					<td><%= link_to category.parent.name, category.parent if category.parent.present? %></td>
+                    <td><%= link_to category.parent.name, category.parent if category.parent.present? %></td>
 
-					<td>
+                    <td>
 
-						<%= link_to t('cat.table.add'), add_category_path(category), class: 'btn btn-outline-primary btn-sm' %>
+                        <%= link_to t('cat.table.add'), add_category_path(category), class: 'btn btn-outline-primary btn-sm' %>
 
-						<%= link_to t('cat.table.edit'), edit_category_path(category), class: 'btn btn-outline-info btn-sm' %>
+                        <%= link_to t('cat.table.edit'), edit_category_path(category), class: 'btn btn-outline-info btn-sm' %>
 
-						<%= link_to t('cat.table.delete'), category_path(category), method: :delete, data: { confirm: t('questionSure') }, class: 'btn btn-outline-danger btn-sm' %>
+                        <%= link_to t('cat.table.delete'), category_path(category), method: :delete, data: { confirm: t('questionSure') }, class: 'btn btn-outline-danger btn-sm' %>
 
-					</td>
+                    </td>
 
-				</tr>
+                </tr>
 
-			<% end %>
+            <% end %>
 
-		</tbody>
+        </tbody>
 
-	</table>
+    </table>
 
 </section>

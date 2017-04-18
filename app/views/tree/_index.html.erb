@@ -1,21 +1,21 @@
 <div class="list-group">
 
-	<ul class="nav-pills">
+    <ul class="nav-pills">
 
-	<% Category.roots.each do |category, children| %>
+    <% Category.roots.each do |category, children| %>
 
-		<li class="nav-item">
+        <li class="nav-item">
 
-			<%= link_to category.name, category, class: "nav-link #{'active' if current_page?(category_path(category)) || @post.present? && @post.category == category}" %>
+            <%= link_to category.name, category, class: "nav-link #{'active' if current_page?(category_path(category)) || @post.present? && @post.category == category}" %>
 
-			<!-- render here is necessary for recursion  -->
+            <!-- render here is necessary for recursion  -->
 
-			<%= render 'tree/sub_categories', categories: category.root.descendants.arrange %>
+            <%= render 'tree/sub_categories', categories: category.root.descendants.arrange %>
 
-		</li>
+        </li>
 
-	<% end %>
+    <% end %>
 
-	</ul>
+    </ul>
 
 </div>

@@ -115,6 +115,8 @@
   
     <li><a href="./Category.html">Category</a>
   
+    <li><a href="./CustomRenderer.html">CustomRenderer</a>
+  
     <li><a href="./Post.html">Post</a>
   
     <li><a href="./PostsController.html">PostsController</a>
@@ -166,12 +168,12 @@
 
           
           <div class="method-source-code" id="add-source">
-            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 37</span>
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add</span>
 
-        <span class="ruby-comment"># choose parent category on default and create new Category</span>
-        <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;id = #{@category.id}&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
-        <span class="ruby-ivar">@category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-comment"># choose parent category on default and create new Category</span>
+  <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;id = #{@category.id}&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
+  <span class="ruby-ivar">@category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">new</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- add-source -->
@@ -200,34 +202,34 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 46</span>
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
 
-        <span class="ruby-ivar">@category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">category_params</span>)
+  <span class="ruby-ivar">@category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">category_params</span>)
 
-        <span class="ruby-comment"># check error and redirect to new category with flash message</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-comment"># check error and redirect to new category with flash message</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">save</span>
 
-                <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@category</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Category create success&quot;</span> }
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@category</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Category create success&quot;</span> }
 
-        <span class="ruby-keyword">else</span>
+  <span class="ruby-keyword">else</span>
 
-                <span class="ruby-comment"># try to catch adding error</span>
-                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@categories</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-comment"># try to catch adding error</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@categories</span>.<span class="ruby-identifier">nil?</span>
 
-                        <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
-                        <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error adding category&quot;</span>
-                        <span class="ruby-identifier">render</span> <span class="ruby-value">:add</span>
+      <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
+      <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error adding category&quot;</span>
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:add</span>
 
-                <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">else</span>
 
-                        <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;id != #{@category.id}&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
-                        <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error create category&quot;</span>
-                        <span class="ruby-identifier">render</span> <span class="ruby-value">:new</span>
+      <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;id != #{@category.id}&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
+      <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error create category&quot;</span>
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:new</span>
 
-                <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
 
-        <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- create-source -->
@@ -257,19 +259,19 @@ homepage</p>
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 118</span>
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
 
-        <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@category</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@category</span>
 
-                <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'cat.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'cat.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
 
-        <span class="ruby-keyword">else</span>
+  <span class="ruby-keyword">else</span>
 
-                <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">destroy</span>
-                <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">categories_path</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Category delete success&quot;</span> }
+    <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">destroy</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">categories_path</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Category delete success&quot;</span> }
 
-        <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroy-source -->
@@ -298,18 +300,18 @@ homepage</p>
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 77</span>
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 
-        <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@category</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@category</span>
 
-                <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'cat.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'cat.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
 
-        <span class="ruby-keyword">else</span>
+  <span class="ruby-keyword">else</span>
 
-                <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;id != #{@category.id}&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
+    <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;id != #{@category.id}&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
 
-        <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- edit-source -->
@@ -338,10 +340,10 @@ homepage</p>
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
 
-        <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">all</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
@@ -370,11 +372,11 @@ homepage</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 29</span>
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
 
-        <span class="ruby-ivar">@category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">new</span>
-        <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
+  <span class="ruby-ivar">@category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
@@ -403,19 +405,19 @@ homepage</p>
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 13</span>
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
 
-        <span class="ruby-comment"># if category is not found</span>
-        <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@category</span>
+  <span class="ruby-comment"># if category is not found</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@category</span>
 
-                <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'cat.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'cat.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
 
-        <span class="ruby-keyword">else</span>
+  <span class="ruby-keyword">else</span>
 
-                <span class="ruby-ivar">@posts</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">category_id</span><span class="ruby-operator">:</span> [<span class="ruby-ivar">@category</span>.<span class="ruby-identifier">subtree_ids</span>])
+    <span class="ruby-ivar">@posts</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">category_id</span><span class="ruby-operator">:</span> [<span class="ruby-ivar">@category</span>.<span class="ruby-identifier">subtree_ids</span>])
 
-        <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- show-source -->
@@ -444,29 +446,29 @@ homepage</p>
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 92</span>
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
 
-        <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@category</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@category</span>
 
-                <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'cat.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'cat.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
 
-        <span class="ruby-keyword">else</span>
+  <span class="ruby-keyword">else</span>
 
-                <span class="ruby-comment"># check error and redirect to change category with flash message</span>
-                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">category_params</span>)
+    <span class="ruby-comment"># check error and redirect to change category with flash message</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@category</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">category_params</span>)
 
-                        <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">categories_path</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Category update success&quot;</span> }
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">categories_path</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Category update success&quot;</span> }
 
-                <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">else</span>
 
-                        <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;id != #{@category.id}&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
-                        <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error updating category&quot;</span>
-                        <span class="ruby-identifier">render</span> <span class="ruby-value">:edit</span>
+      <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;id != #{@category.id}&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:name</span>)
+      <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error updating category&quot;</span>
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:edit</span>
 
-                <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
 
-        <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- update-source -->

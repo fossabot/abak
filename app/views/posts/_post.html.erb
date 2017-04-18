@@ -1,27 +1,27 @@
 <article>
 
-	<section class="head">
-		
-		<h2><%= link_to post.title, [@category, post] %></h2>
+    <section class="head">
+        
+        <h2><%= link_to post.title, [@category, post] %></h2>
 
 <!-- Accountability blank category -->
 
-		<% if post.category.present? %>
+        <% if post.category.present? %>
 
-			<%= link_to post.category.name, post.category %>
+            <%= link_to post.category.name, post.category %>
 
-		<% end %>
+        <% end %>
 
-		<%= link_to t('form.edit'), edit_category_post_path(@category, post) %>
+        <%= link_to t('form.edit'), edit_category_post_path(@category, post) %>
 
-		<%= link_to t('form.delete'), [@category, post], method: :delete, data: { confirm: t('questionSure') } %>
+        <%= link_to t('form.delete'), [@category, post], method: :delete, data: { confirm: t('questionSure') } %>
 
-	</section>
+    </section>
 
-	<section class="preview">
-		
-		<%= post.preview %>
+    <section class="preview">
+        
+        <%= post.preview %>
 
-	</section>
+    </section>
 
 </article>

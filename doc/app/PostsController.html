@@ -113,6 +113,8 @@
   
     <li><a href="./Category.html">Category</a>
   
+    <li><a href="./CustomRenderer.html">CustomRenderer</a>
+  
     <li><a href="./Post.html">Post</a>
   
     <li><a href="./PostsController.html">PostsController</a>
@@ -164,22 +166,22 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 33</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
 
-        <span class="ruby-ivar">@post</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">post_params</span>)
+    <span class="ruby-ivar">@post</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">post_params</span>)
 
-        <span class="ruby-comment"># check error and redirect to new article with flash message</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-comment"># check error and redirect to new article with flash message</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">save</span>
 
-                <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@post</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Article create success&quot;</span> }
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@post</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Article create success&quot;</span> }
 
-        <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">else</span>
 
-                <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error create article&quot;</span>
-                <span class="ruby-identifier">render</span> <span class="ruby-value">:new</span>
+        <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error create article&quot;</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:new</span>
 
-        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- create-source -->
@@ -209,19 +211,19 @@ homepage</p>
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 88</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
 
-        <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@post</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@post</span>
 
-                <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'post.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'post.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
 
-        <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">else</span>
 
-                <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">destroy</span>
-                <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">posts_path</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Article delete success&quot;</span> }
+        <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">posts_path</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Article delete success&quot;</span> }
 
-        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroy-source -->
@@ -250,14 +252,14 @@ homepage</p>
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 52</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 
-        <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@post</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@post</span>
 
-                <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'post.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'post.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
 
-        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- edit-source -->
@@ -286,10 +288,10 @@ homepage</p>
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
 
-        <span class="ruby-ivar">@posts</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">all</span>
+    <span class="ruby-ivar">@posts</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">all</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
@@ -318,10 +320,10 @@ homepage</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 25</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
 
-        <span class="ruby-ivar">@post</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@post</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
@@ -350,15 +352,15 @@ homepage</p>
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 13</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
 
-        <span class="ruby-comment">#if article is not found</span>
-        <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@post</span>
+    <span class="ruby-comment">#if article is not found</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@post</span>
 
-                <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'post.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'post.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
 
-        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- show-source -->
@@ -387,28 +389,28 @@ homepage</p>
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 63</span>
+            <pre><span class="ruby-comment"># File app/controllers/posts_controller.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
 
-        <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@post</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@post</span>
 
-                <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'post.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">'post.notFound'</span>), <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">404</span>
 
+    <span class="ruby-keyword">else</span>
+
+        <span class="ruby-comment"># check error and redirect to change article with flash message</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">post_params</span>)
+
+            <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@post</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Article update success&quot;</span> }
+            
         <span class="ruby-keyword">else</span>
 
-                <span class="ruby-comment"># check error and redirect to change article with flash message</span>
-                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@post</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">post_params</span>)
-
-                        <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@post</span>, <span class="ruby-value">:flash</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span>  <span class="ruby-string">&quot;Article update success&quot;</span> }
-                        
-                <span class="ruby-keyword">else</span>
-
-                        <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error updating article&quot;</span>
-                        <span class="ruby-identifier">render</span> <span class="ruby-value">:edit</span>
-
-                <span class="ruby-keyword">end</span>
+            <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[ <span class="ruby-value">:danger</span> ] = <span class="ruby-string">&quot;Error updating article&quot;</span>
+            <span class="ruby-identifier">render</span> <span class="ruby-value">:edit</span>
 
         <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- update-source -->

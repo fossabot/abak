@@ -14,19 +14,19 @@ gem 'redcarpet'
 
 source 'https://rails-assets.org' do
 
-	gem 'rails-assets-tether', '>= 1.3.3'
-	
+    gem 'rails-assets-tether', '>= 1.3.3'
+    
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
 
-	gem 'sass-rails', "  ~> 3.1.0.rc"
-	gem 'coffee-rails', "~> 3.1.0.rc"
-	gem 'uglifier'
-	gem 'bootstrap', '~> 4.0.0.alpha6'
-	gem 'bootstrap-sass', '~> 3.1.0'
+    gem 'sass-rails', "  ~> 3.1.0.rc"
+    gem 'coffee-rails', "~> 3.1.0.rc"
+    gem 'uglifier'
+    gem 'bootstrap', '~> 4.0.0.alpha6'
+    gem 'bootstrap-sass', '~> 3.1.0'
 
 end
 
@@ -41,15 +41,15 @@ end
 
 group :test do
 
-	# Pretty printed test output
-	gem 'turn', :require => false
+    # Pretty printed test output
+    gem 'turn', :require => false
 
 end
 
 group :development, :test do
 
-	gem 'rspec-rails', '~> 3.5'
-	gem 'factory_girl_rails'
-	gem 'rspec-context-private'
+    gem 'rspec-rails', '~> 3.5'
+    gem 'factory_girl_rails'
+    gem 'rspec-context-private'
 
 end
