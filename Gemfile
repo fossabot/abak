@@ -22,8 +22,8 @@ end
 # in production environments by default.
 group :assets do
 
-    gem 'sass-rails', "  ~> 3.1.0.rc"
-    gem 'coffee-rails', "~> 3.1.0.rc"
+    gem 'sass-rails', '~> 3.1.0.rc'
+    gem 'coffee-rails', '~> 3.1.0.rc'
     gem 'uglifier'
     gem 'bootstrap', '~> 4.0.0.alpha6'
     gem 'bootstrap-sass', '~> 3.1.0'
@@ -39,17 +39,12 @@ end
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
-
-    # Pretty printed test output
-    gem 'turn', :require => false
-
-end
-
 group :development, :test do
-
+    # Pretty printed test output
+    gem 'turn', require: false
+    gem 'shoulda-matchers'
+    gem 'database_cleaner'
     gem 'rspec-rails', '~> 3.5'
     gem 'factory_girl_rails'
     gem 'rspec-context-private'
-
 end
