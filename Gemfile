@@ -1,4 +1,7 @@
 source 'http://rubygems.org'
+
+ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
+
 gem 'rails', '3.1.0.rc8'
 
 # Bundle edge Rails instead:
