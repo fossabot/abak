@@ -4,4 +4,4 @@ log/*.log
 tmp/
 .sass-cache/
 config/initializers/secret_token.rb
-.idea/
+.idea
