@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
+ruby '1.9.3-p551'
 
 gem 'rails', '3.1.0.rc8'
 
