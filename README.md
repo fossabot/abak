@@ -1,43 +1,9 @@
-# abak
+Demo:
 
-<!-- Second mission in a file: find_attr_person.rb -->
+https://abak.herokuapp.com/
 
-# Расхождения с ТЗ:
-------------
-
-~~~
-
-Адресная схема мини сайта организована с использованием двух контроллёров. 
+gem install puma -- --with-opt-dir=./openssl
 
 ~~~
 
-### Catalog отвечает за иерархию и наглядное отоброжение всего дерева. 
-
-
-**Поэтому страницы:**
-
-```
-[site]name1/name2/name3/edit 
-[site]name1/name2/name3/add
-
-```
-
-*** работают без редактирования текста, и заголовка ***
-
-
-### Post отвечает за статьи, в который присутствуют заголовки и возможность добавления текста
-
-
-### Преобразования текста подвергаются стандартным средствам **Redcarpet**
-
-~~~
-
-1) **[string]** - "<b>[string]</b>"
-2) *[string]* - "<i>[string]</i>"
-3) "[string](/name1/name2/name3)" - "<a href='[site]/name1/name2/name3'>[string]</a>"
-
-~~~
-# результаты тестов утилитой ab в файле ./README
-
-------------
-затраченное время на изучение и реализацию можно проследить по истории коммитов
+http://stackoverflow.com/questions/23021236/cannot-launch-rails-server-uninitialized-constants-sprocketsrailsversio
