@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Category < ActiveRecord::Base
-
   extend FriendlyId
-  
   friendly_id :name, use: :slugged
   has_many :posts
   validates :name, presence: true
@@ -13,7 +11,6 @@ class Category < ActiveRecord::Base
 
   def update_slug
     name_as_slug = name.parameterize
-
     if parent.present?
       self.slug = [parent.slug, (slug.blank? ? name_as_slug : slug.split('/').last)].join('/')
     else
