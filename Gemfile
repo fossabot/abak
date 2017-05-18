@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-
 gem 'rails', '3.1.0.rc8'
 
 # Bundle edge Rails instead:
@@ -39,7 +38,6 @@ group :development, :test do
   # Pretty printed test output
   gem 'turn', require: false
   gem 'shoulda-matchers'
-  gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
   gem 'rspec-context-private'
