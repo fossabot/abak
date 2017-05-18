@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.10'
+ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
-gem 'rails', '3.1.0.rc8'
+gem 'rails', '3.1.12'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
