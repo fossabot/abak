@@ -76,7 +76,7 @@ class CategoriesController < ApplicationController
 
   def set_category
     begin
-      @category = Category.find(params[:id])
+      @category = Category.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
       @category = nil
     end

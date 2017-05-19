@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 
   def set_post
     begin
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
       @post = nil
     end
