@@ -34,7 +34,7 @@ GEM
       activerecord (>= 3.0.0)
     ansi (1.5.0)
     arel (2.2.3)
-    autoprefixer-rails (7.1.0)
+    autoprefixer-rails (7.1.1)
       execjs
     bootstrap (4.0.0.alpha6)
       autoprefixer-rails (>= 6.0.3)
@@ -121,7 +121,7 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
-    sass (3.4.23)
+    sass (3.4.24)
     sass-rails (3.1.7)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
