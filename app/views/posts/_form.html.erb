@@ -1,67 +1,34 @@
 <!-- Show error -->
-
 <% if @post.errors.any? %>
-
-    <div class="alert alert-danger">
-
-        <h3><%= t('common.errors') %></h3>
-
-        <ul>
-
-            <% @post.errors.full_messages.each do |message| %>
-
-                <li><%= message %></li>
-
-            <% end %>
-
-        </ul>
-
-    </div>
-
+  <div class="alert alert-danger">
+    <h3><%= t('common.errors') %></h3>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
-
 <!-- Input and edit form here -->
-
 <%= form_for @post do |f| %>
-
-    <div class="form-group">
-
-        <%= f.label :title %>
-
-        <%= f.text_field :title, class: 'form-control' %>
-
-    </div>
-
-    <div class="form-group">
-
-        <%= f.label :preview %>
-
-        <%= f.text_area :preview, class: 'form-control', rows: 5 %>
-
-    </div>
-
-    <div class="form-group">
-
-        <%= f.label :body %>
-
-        <%= f.text_area :body, class: 'form-control', rows: 15 %>
-
-    </div>
-
-    <div class="form-group">
-        
-        <%= f.label :category_id %>
-
-        <%= f.collection_select :category_id, Category.order(:name), :id, :name, class: 'form-control' %>
-    
-    </div>
-
-    <div class="form-group">
-        
-        <%= f.submit t('form.save'), class: 'btn btn-primary' %>
-        
-        <%= link_to t('form.back'), :back, class: 'btn btn-outline-secondary' %>
-    
-    </div>
-
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :preview %>
+    <%= f.text_area :preview, class: 'form-control', rows: 5 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control', rows: 15 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit t('form.save'), class: 'btn btn-primary' %>
+    <%= link_to t('form.back'), :back, class: 'btn btn-outline-secondary' %>
+  </div>
 <% end %>
