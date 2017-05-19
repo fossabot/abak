@@ -2,31 +2,33 @@ source 'https://rubygems.org'
 
 ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
-gem 'rails', '3.1.12'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 #gem 'sqlite3'
 gem 'pg'
-gem 'strong_parameters'
+gem 'sprockets'
+gem 'sprockets-rails'
 gem 'ancestry'
 gem 'jquery-rails'
 gem 'friendly_id'
 gem 'redcarpet'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.3.3'
+  gem 'rails-assets-tether'
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.1.0.rc'
-  gem 'coffee-rails', '~> 3.1.0.rc'
+  gem 'sass'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
   gem 'bootstrap', '~> 4.0.0.alpha6'
-  gem 'bootstrap-sass', '~> 3.1.0'
+  gem 'bootstrap-sass'
 end
 
 # Use unicorn as the web server
@@ -42,7 +44,7 @@ group :development, :test do
   # Pretty printed test output
   gem 'turn', require: false
   gem 'shoulda-matchers'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rspec-context-private'
 end

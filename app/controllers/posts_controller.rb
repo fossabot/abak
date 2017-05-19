@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class PostsController < ApplicationController
 
-  before_filter :set_post, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @posts = Post.all
