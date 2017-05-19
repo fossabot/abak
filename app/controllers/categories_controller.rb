@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class CategoriesController < ApplicationController
-  before_filter :set_category, only: [ :show, :edit, :update, :destroy, :add ]
+  before_action :set_category, only: [ :show, :edit, :update, :destroy, :add ]
 
   def index
     @categories = Category.all
@@ -76,7 +76,7 @@ class CategoriesController < ApplicationController
 
   def set_category
     begin
-      @category = Category.find(params[:id])
+      @category = Category.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
       @category = nil
     end
