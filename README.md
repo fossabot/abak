@@ -1,5 +1,5 @@
 # abak
-
+Database: SQlite3
 <!-- Second mission in a file: find_attr_person.rb -->
 
 # Расхождения с ТЗ:
