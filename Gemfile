@@ -49,3 +49,5 @@ group :development, :test do
   gem 'rspec-context-private'
   gem 'rails-controller-testing'
 end
+
+gem 'rails_12factor', group: :production
