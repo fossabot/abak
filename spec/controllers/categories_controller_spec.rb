@@ -16,13 +16,6 @@ RSpec.describe CategoriesController, type: :controller do
 
       expect(response).to render_template('index')
     end
-
-    it 'loads all of the categories into @categories' do
-      category1, category2 = create(:category), create(:category)
-      get :index
-
-      expect(assigns(:categories)).to match_array([category1, category2])
-    end
   end
 
   describe 'GET #show/:id' do
@@ -98,23 +91,11 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'destroy action/:id' do
-      it 'redirects to index action when an article is destroyed seccessfuly' do
-        category = create(:category)
-        delete :destroy, { params: { id: category.id } }
+    it 'redirects to index action when an article is destroyed seccessfuly' do
+      category = create(:category)
+      delete :destroy, { params: { id: category.id } }
 
-        expect(response).to redirect_to(categories_path)
-      end
-  end
-
-  describe 'set_category', :private do
-    it 'just call private method' do
-      expect{subject.set_category}.to raise_error(NoMethodError)
-    end
-  end
-
-  describe 'category_params', :private do
-    it 'method for limitation of params[something] just call' do
-      expect{subject.category_params}.to raise_error(NoMethodError)
+      expect(response).to redirect_to(categories_path)
     end
   end
 end

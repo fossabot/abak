@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to @category, :flash => { :success =>  'Category create success' }
+      redirect_to @category, flash: { success:  'Category create success' }
     else
       if @categories.nil?
         @categories = Category.order(:name)
@@ -54,7 +54,7 @@ class CategoriesController < ApplicationController
       render text: t('cat.notFound'), status: 404
     else
       if @category.update_attributes(category_params)
-        redirect_to categories_path, :flash => { :success =>  'Category update success' }
+        redirect_to categories_path, flash: { success:  'Category update success' }
       else
         @categories = Category.where("id != #{@category.id}").order(:name)
         flash.now[ :danger ] = 'Error updating category'
@@ -68,7 +68,7 @@ class CategoriesController < ApplicationController
       render text: t('cat.notFound'), status: 404
     else
       @category.destroy
-      redirect_to categories_path, :flash => { :success =>  'Category delete success' }
+      redirect_to categories_path, flash: { success:  'Category delete success' }
     end
   end
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   it_renders_404_page_when_post_is_not_found :show, :edit, :update, :destroy
-  before { create(:category) }
+
   describe 'GET #index' do
     it 'responds successfully with an HTTP 200 status code' do
       get :index
@@ -15,13 +15,6 @@ RSpec.describe PostsController, type: :controller do
       get :index
 
       expect(response).to render_template('index')
-    end
-
-    it 'loads all of the posts into @posts' do
-      post1, post2 = create(:post), create(:post)
-      get :index
-
-      expect(assigns(:posts)).to match_array([post1, post2])
     end
   end
 
@@ -87,18 +80,6 @@ RSpec.describe PostsController, type: :controller do
       delete :destroy, { params: { id: post.id } }
 
       expect(response).to redirect_to(posts_path)
-    end
-  end
-
-  describe 'set_post', :private do
-    it 'just call private method' do
-      expect{subject.set_post}.to raise_error(NoMethodError)
-    end
-  end
-
-  describe 'post_params', :private do
-    it 'method for limitation of params[something] just call' do
-      expect{subject.post_params}.to raise_error(NoMethodError)
     end
   end
 end
