@@ -33,6 +33,8 @@ end
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+# Fake values generator
+gem 'faker', '~> 1.7.3'
 group :development, :test do
   # Pretty printed test output
   gem 'turn', '~> 0.9.6', require: false
@@ -47,6 +49,8 @@ group :development, :test do
   # Very informative error pages with console
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
+  # Generate code coverate reports
+  gem 'simplecov', '~> 0.13.0', require: false
 end
 
 gem 'rails_12factor', group: :production
