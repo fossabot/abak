@@ -46,6 +46,8 @@ group :development, :test do
   gem 'rspec-context-private'
   gem 'rails-controller-testing'
   gem 'listen'
+  # Run tests with clean database
+  gem 'database_cleaner', '~> 1.5.3'
 end
 
 gem 'rails_12factor', group: :production
