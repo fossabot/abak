@@ -17,18 +17,15 @@ gem 'friendly_id'
 gem 'redcarpet'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-tether'
+  gem 'rails-assets-tether', '>= 1.3.3'
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass'
-  gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'bootstrap', '~> 4.0.0.alpha6'
-  gem 'bootstrap-sass'
 end
 
 # Use unicorn as the web server
@@ -48,6 +45,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-context-private'
   gem 'rails-controller-testing'
+  gem 'listen'
 end
 
 gem 'rails_12factor', group: :production

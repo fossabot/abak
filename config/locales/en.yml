@@ -1,30 +1,54 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
 
 en:
   title: "Abak"
   hello: "Hello world"
   questionSure: "Are you sure?"
-
   cat:
     add: "Add category"
     new: "Create new category"
     edit: "Change category"
     notFound: "Category is not found"
-
     table:
       name: "Name of Category"
       parent: "Name of Parent Category"
       add: "Add"
       edit: "Edit"
       delete: "Delete"
-
   post:
     index: "Posts"
     new: "New Article"
     edit: "Editing articles"
     notFound: "Page not found"
-
   form:
     accept: "Accept"
     cancel: "Cancel"
@@ -33,7 +57,6 @@ en:
     edit: "Edit"
     add: "Add"
     delete: "Delete"
-  
   activerecord:
     attributes:
       category:
