@@ -1,7 +1,6 @@
-# -*- encoding : utf-8 -*-
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe PostsController, :type => :controller do
+RSpec.describe PostsController, type: :controller do
   it_renders_404_page_when_post_is_not_found :show, :edit, :update, :destroy
 
   describe 'GET #index' do
@@ -15,7 +14,7 @@ RSpec.describe PostsController, :type => :controller do
     it 'renders the index template' do
       get :index
 
-      expect(response).to render_template("index")
+      expect(response).to render_template('index')
     end
 
     it 'loads all of the posts into @posts' do
@@ -78,7 +77,7 @@ RSpec.describe PostsController, :type => :controller do
       post = create(:post)
       put :update, id: post.id, post: post.attributes = { title: '', preview: 'new preview', body: 'new body', category_id: '' }
 
-      expect(response).to render_template("edit")
+      expect(response).to render_template('edit')
     end
   end
 

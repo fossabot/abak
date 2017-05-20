@@ -1,8 +1,7 @@
-# -*- encoding : utf-8 -*-
 require 'rails_helper'
 
-RSpec.describe Post, :type => :model do
-  it "validates the name, preview, body and makes sure it's not empty" do
+RSpec.describe Post, type: :model do
+  it 'validates the name, preview, body and makes sure it is not empty' do
     post = Post.new( title: '', preview: '', body: '')
     post.valid?
 

@@ -1,7 +1,6 @@
-# -*- encoding : utf-8 -*-
 require 'rails_helper'
 
-RSpec.describe CategoriesController, :type => :controller do
+RSpec.describe CategoriesController, type: :controller do
 
   it_renders_404_page_when_category_is_not_found :show, :edit, :update, :destroy
 
