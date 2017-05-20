@@ -4,9 +4,6 @@ ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
 gem 'rails', '~> 5.1.1'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 #gem 'sqlite3'
 gem 'pg', '~> 0.20.0'
 gem 'sprockets', '~> 3.7.1'
