@@ -48,6 +48,7 @@ RSpec.describe CategoriesController, type: :controller do
     it 'redirects to new article if validaition was true' do
       post :create, { params: { name: 'newCategory' } }
 
+      expect(Category.find_by_name('newCategory')).to be_present
       expect(response).to redirect_to(assigns(:category))
     end
 
@@ -72,6 +73,7 @@ RSpec.describe CategoriesController, type: :controller do
         category = create(:category)
         put :update, { params: { id: category.id, name: 'newTitle' } }
 
+        expect(Category.find_by_id(category.id).name).to eq('newTitle')
         expect(response).to redirect_to(categories_path)
     end
 
@@ -79,6 +81,7 @@ RSpec.describe CategoriesController, type: :controller do
         category = create(:category)
         put :update, { params: { id: category.id, name: '' } }
 
+        expect(Category.find_by_id(category.id).name).not_to eq('')
         expect(response).to render_template('edit')
     end
 
@@ -95,6 +98,7 @@ RSpec.describe CategoriesController, type: :controller do
       category = create(:category)
       delete :destroy, { params: { id: category.id } }
 
+      expect(Category.find_by_id(category.id)).to be_nil
       expect(response).to redirect_to(categories_path)
     end
   end
