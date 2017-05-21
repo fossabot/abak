@@ -1,7 +1,7 @@
 <%= render 'tree/breadcrumb', category: @category %>
 <h1><%= @category.name %></h1>
-  <%= link_to t('cat.add'), add_category_path(@categories) %>
-  <%= link_to t('cat.edit'), edit_category_path(@categories) %>
+  <%= link_to t('cat.add'), add_category_path(@category) %>
+  <%= link_to t('cat.edit'), edit_category_path(@category) %>
 <section id="posts">
   <%= render @posts %>
 </section>
