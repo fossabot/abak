@@ -24,7 +24,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = Category.new
+    @category.assign_attributes(category_params)
     if @category.save
       redirect_to @category, flash: { success:  t('cat.successCreate') }
     else
@@ -76,7 +77,7 @@ class CategoriesController < ApplicationController
 
   def set_category
     begin
-      @category = Category.find(params[:id])
+      @category = Category.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
       @category = nil
     end

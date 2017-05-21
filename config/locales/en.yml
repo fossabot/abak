@@ -33,6 +33,8 @@ en:
   title: "Abak"
   hello: "Hello world"
   questionSure: "Are you sure?"
+  common:
+    errors: "Errors"
   cat:
     add: "Add category"
     new: "Create new category"
