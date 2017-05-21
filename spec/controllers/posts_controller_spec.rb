@@ -39,6 +39,7 @@ RSpec.describe PostsController, type: :controller do
     it 'redirects to new article if validaition was true' do
       post :create, { params: { title: 'Test title', preview: 'Test preview', body: 'Test body', category_id: '' } }
 
+      expect(Post.find_by_title('Test title').body).to eq('Test body')
       expect(response).to redirect_to(assigns(:post))
     end
 

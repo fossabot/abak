@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
   def index
@@ -7,9 +6,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    unless @post
-      render text: t('post.notFound'), status: 404
-    end
   end
 
   def new
@@ -17,41 +13,31 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new
+    @post.assign_attributes(post_params)
     if @post.save
-      redirect_to @post, flash: { success:  'Article create success' }
+      redirect_to @post, flash: { success:  t('post.successCreate') }
     else
-      flash.now[ :danger ] = 'Error create article'
+      flash.now[ :danger ] = t('post.errorCreate')
       render :new
     end
   end
 
   def edit
-    unless @post
-      render text: t('post.notFound'), status: 404
-    end
   end
 
   def update
-    unless @post
-      render text: t('post.notFound'), status: 404
+    if @post.update_attributes(post_params)
+      redirect_to @post, flash: { success:  t('post.successUpdate') }
     else
-      if @post.update_attributes(post_params)
-        redirect_to @post, flash: { success:  'Article update success' }
-      else
-        flash.now[ :danger ] = 'Error updating article'
-        render :edit
-      end
+      flash.now[ :danger ] = t('post.errorUpdate')
+      render :edit
     end
   end
 
   def destroy
-    unless @post
-      render text: t('post.notFound'), status: 404
-    else
-      @post.destroy
-      redirect_to posts_path, flash: { success:  'Article delete success' }
-    end
+    @post.destroy
+    redirect_to posts_path, flash: { success:  t('post.successDelete') }
   end
 
   private
@@ -60,7 +46,7 @@ class PostsController < ApplicationController
     begin
       @post = Post.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
-      @post = nil
+      render layout: true, html: t('post.notFound'), status: 404
     end
   end
 

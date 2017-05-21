@@ -33,6 +33,8 @@ en:
   title: "Abak"
   hello: "Hello world"
   questionSure: "Are you sure?"
+  common:
+    errors: "Errors"
   cat:
     add: "Add category"
     new: "Create new category"
@@ -44,11 +46,22 @@ en:
       add: "Add"
       edit: "Edit"
       delete: "Delete"
+    successCreate: "Category create success"
+    errorCreate: "Error create category"
+    errorAdd: "Error adding category"
+    successUpdate: "Category update success"
+    errorUpdate: "Error updating category"
+    successDelete: "Category delete success"
   post:
     index: "Posts"
     new: "New Article"
     edit: "Editing articles"
     notFound: "Page not found"
+    successCreate: "Article create success"
+    errorCreate: "Error create article"
+    successUpdate: "Article update success"
+    errorUpdate: "Error updating article"
+    successDelete: "Article delete success"
   form:
     accept: "Accept"
     cancel: "Cancel"

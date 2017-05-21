@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 class CategoriesController < ApplicationController
   before_action :set_category, only: [ :show, :edit, :update, :destroy, :add ]
 
@@ -7,11 +6,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    unless @category
-      render text: t('cat.notFound'), status: 404
-    else
-      @posts = Post.where(category_id: [@category.subtree_ids])
-    end
+    @categories = Category.order(:name)
+    @posts = Post.where(category_id: [@category.subtree_ids])
   end
 
   def new
@@ -21,55 +17,44 @@ class CategoriesController < ApplicationController
 
   def add
     @categories = Category.where("id = #{@category.id}").order(:name)
-    @category = Category.new
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = Category.new
+    @category.assign_attributes(category_params)
     if @category.save
-      redirect_to @category, flash: { success:  'Category create success' }
+      redirect_to @category, flash: { success:  t('cat.successCreate') }
     else
       if @categories.nil?
         @categories = Category.order(:name)
-        flash.now[ :danger ] = 'Error adding category'
+        flash.now[ :danger ] = t('cat.errorAdd')
         render :add
       else
         @categories = Category.where("id != #{@category.id}").order(:name)
-        flash.now[ :danger ] = 'Error create category'
+        flash.now[ :danger ] = t('cat.errorCreate')
         render :new
       end
     end
   end
 
   def edit
-    unless @category
-      render text: t('cat.notFound'), status: 404
-    else
-      @categories = Category.where("id != #{@category.id}").order(:name)
-    end
+    @categories = Category.where("id != #{@category.id}").order(:name)
   end
 
   def update
-    unless @category
-      render text: t('cat.notFound'), status: 404
+    @category.assign_attributes(category_params)
+    if @category.save
+      redirect_to categories_path, flash: { success:  t('cat.successUpdate') }
     else
-      if @category.update_attributes(category_params)
-        redirect_to categories_path, flash: { success:  'Category update success' }
-      else
-        @categories = Category.where("id != #{@category.id}").order(:name)
-        flash.now[ :danger ] = 'Error updating category'
-        render :edit
-      end
+      @categories = Category.where("id != #{@category.id}").order(:name)
+      flash.now[ :danger ] = t('cat.errorUpdate')
+      render :edit
     end
   end
 
   def destroy
-    unless @category
-      render text: t('cat.notFound'), status: 404
-    else
-      @category.destroy
-      redirect_to categories_path, flash: { success:  'Category delete success' }
-    end
+    @category.destroy
+    redirect_to categories_path, flash: { success:  t('cat.successDelete') }
   end
 
   private
@@ -78,7 +63,7 @@ class CategoriesController < ApplicationController
     begin
       @category = Category.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
-      @category = nil
+      render layout: true, html: t('cat.notFound'), status: 404
     end
   end
 

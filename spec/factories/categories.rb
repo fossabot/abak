@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :category do
-    sequence(:name) { |i| "homepage#{i}" }
+    name { Faker::Hacker.adjective }
   end
 end
