@@ -24,6 +24,6 @@ describe Post do
   it 'renders link from [string](/name1/name2/name3) for body (Reverse example)' do
     post.update_attribute(:body, '[string](/name1/name2/name3)')
 
-    expect(markdown post.body).to eql '<p><a href=\"/name1/name2/name3\">string</a></p>\n'
+    expect(markdown post.body).to match('<p><a href="/name1/name2/name3">string</a></p>')
   end
 end
