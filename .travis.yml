@@ -13,8 +13,6 @@ services:
   - postgresql
 addons:
   apt:
-    sources:
-    - precise-pgdg-9.6
     packages:
     - postgresql-9.6
     - postgresql-contrib-9.6
@@ -26,4 +24,4 @@ before_script:
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - RAILS_ENV=test bundle exec rspec
-  - RAILS_ENV=test bundle exec rake db:seed
+#  - RAILS_ENV=test bundle exec rake db:seed
