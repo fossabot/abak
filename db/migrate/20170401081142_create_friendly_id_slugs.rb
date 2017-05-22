@@ -1,5 +1,4 @@
-# -*- encoding : utf-8 -*-
-class CreateFriendlyIdSlugs < ActiveRecord::Migration
+class CreateFriendlyIdSlugs < ActiveRecord::Migration[5.1]
   def self.up
     create_table :friendly_id_slugs do |t|
       t.string   :slug,           :null => false
