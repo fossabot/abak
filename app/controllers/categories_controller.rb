@@ -17,6 +17,7 @@ class CategoriesController < ApplicationController
 
   def add
     @categories = Category.where("id = #{@category.id}").order(:name)
+    @category = Category.new
   end
 
   def create
@@ -68,6 +69,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.permit(:name, :parent_id)
+    params.require(:category).permit(:name, :parent_id)
   end
 end
