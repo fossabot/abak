@@ -7,7 +7,6 @@ RSpec.describe PostsController, type: :controller do
     it 'responds successfully with an HTTP 200 status code' do
       get :index
 
-      expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
@@ -64,6 +63,7 @@ RSpec.describe PostsController, type: :controller do
       post = create(:post)
       put :update, { params: { id: post.id, title: 'new title', preview: 'new preview', body: 'new body', category_id: '' } }
 
+      expect(Post.find_by_id(post.id).body).to eq('new body')
       expect(response).to redirect_to(assigns(:post))
     end
 
@@ -71,6 +71,7 @@ RSpec.describe PostsController, type: :controller do
       post = create(:post)
       put :update, { params: { id: post.id, title: '', preview: 'new preview', body: 'new body', category_id: '' } }
 
+      expect(Post.find_by_id(post.id).body).not_to eq('new body')
       expect(response).to render_template('edit')
     end
   end
@@ -80,6 +81,7 @@ RSpec.describe PostsController, type: :controller do
       post = create(:post)
       delete :destroy, { params: { id: post.id } }
 
+      expect(Post.find_by_id(post.id)).to be_nil
       expect(response).to redirect_to(posts_path)
     end
   end
