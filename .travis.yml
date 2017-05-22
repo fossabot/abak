@@ -1,3 +1,4 @@
+sudo: required
 language: ruby
 rvm:
   - 2.4.1
@@ -6,8 +7,14 @@ env:
 services:
   - postgresql
 addons:
+  apt:
+    sources:
+    - precise-pgdg-9.6
+    packages:
+    - postgresql-9.6
+    - postgresql-contrib-9.6
   postgresql: "9.6"
 before_script:
+  - sudo service postgresql start
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
-
