@@ -22,6 +22,9 @@ group :assets do
   gem 'coffee-rails', '~> 4.2.1'
   gem 'uglifier', '~> 3.2.0'
   gem 'bootstrap', '~> 4.0.0.alpha6'
+  # Slim for templates
+  gem 'slim', '~> 3.0.7'
+  gem 'slim-rails', '~> 3.1.0'
 end
 
 # Use unicorn as the web server
