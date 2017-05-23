@@ -51,7 +51,7 @@ en:
     errorAdd: "Error adding category"
     successUpdate: "Category update success"
     errorUpdate: "Error updating category"
-    successDelete: "Category delete success"
+    successDelete: "Category deleted sucessfully"
   post:
     index: "Posts"
     new: "New Article"
@@ -61,7 +61,7 @@ en:
     errorCreate: "Error create article"
     successUpdate: "Article update success"
     errorUpdate: "Error updating article"
-    successDelete: "Article delete success"
+    successDelete: "Article deleted sucessfully"
   form:
     accept: "Accept"
     cancel: "Cancel"
