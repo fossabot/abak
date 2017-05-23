@@ -25,7 +25,7 @@
           <td>
             <%= link_to t('cat.table.add'), add_category_path(category), class: 'btn btn-outline-primary btn-sm' %>
             <%= link_to t('cat.table.edit'), edit_category_path(category), class: 'btn btn-outline-info btn-sm' %>
-            <%= link_to t('cat.table.delete'), category_path(category), method: :delete, data: { confirm: t('questionSure') }, class: 'btn btn-outline-danger btn-sm' %>
+            <%= delete_button_to t('cat.table.delete'), category_path(category), class: 'btn btn-outline-danger btn-sm' %>
           </td>
         </tr>
       <% end %>

@@ -16,4 +16,4 @@ _**sudo chmod +x+x+x bin/install**_
 
 _use param: reboot for reinstall app_
 
-'./bin/install reboot'
+`./bin/install reboot`
