@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Run this script immediately after cloning the codebase.
+
+# Exit if any subcommand fails
+set -e
+
+if [ "$@" = reboot ]
+then
+    bundle exec bin/rails db:drop
+else
+    echo "use param: reboot for reinstall app"
+fi
+
+cp .env.example .env
+
+bundle install
+
+bundle exec bin/rails db:create
+bundle exec bin/rails db:migrate RAILS_ENV=development
+bundle exec bin/rails db:migrate RAILS_ENV=test
+bundle exec bin/rails db:seed RAILS_ENV=development
