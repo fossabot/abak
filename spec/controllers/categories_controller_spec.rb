@@ -46,14 +46,14 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe 'category #create' do
     it 'redirects to new article if validaition was true' do
-      post :create, { params: { name: 'newCategory' } }
+      post :create, { params: { category: { name: 'newCategory' } } }
 
       expect(Category.find_by_name('newCategory')).to be_present
       expect(response).to redirect_to(assigns(:category))
     end
 
     it 'renders page again with error if validaition fail' do
-      post :create, { params: { name: nil } }
+      post :create, { params: { category: { name: nil } } }
 
       expect(response).to render_template('add')
     end
@@ -70,24 +70,24 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe 'PUT #update/:id' do
     it 'redirects to updated article if validation was true' do
-        category = create(:category)
-        put :update, { params: { id: category.id, name: 'newTitle' } }
+      category = create(:category)
+      put :update, { params: { id: category.id, category: { name: 'newTitle' } } }
 
-        expect(Category.find_by_id(category.id).name).to eq('newTitle')
-        expect(response).to redirect_to(categories_path)
+      expect(Category.find_by_id(category.id).name).to eq('newTitle')
+      expect(response).to redirect_to(categories_path)
     end
 
     it 'should re-render edit template on failed update' do
-        category = create(:category)
-        put :update, { params: { id: category.id, name: '' } }
+      category = create(:category)
+      put :update, { params: { id: category.id, category: { name: '' } } }
 
-        expect(Category.find_by_id(category.id).name).not_to eq('')
-        expect(response).to render_template('edit')
+      expect(Category.find_by_id(category.id).name).not_to eq('')
+      expect(response).to render_template('edit')
     end
 
     it 'should redirect to #add/id if name of category descendant of itself' do
       category = create(:category)
-      put :update, { params: { id: category.id, name: '', ancestry: category.id } }
+      put :update, { params: { id: category.id, category: { name: '', ancestry: category.id } } }
 
       expect(response).to be_success
     end

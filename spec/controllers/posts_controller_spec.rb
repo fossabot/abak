@@ -36,14 +36,14 @@ RSpec.describe PostsController, type: :controller do
 
   describe 'POST #create' do
     it 'redirects to new article if validaition was true' do
-      post :create, { params: { title: 'Test title', preview: 'Test preview', body: 'Test body', category_id: '' } }
+      post :create, { params: { post: { title: 'Test title', preview: 'Test preview', body: 'Test body', category_id: '' } } }
 
       expect(Post.find_by_title('Test title').body).to eq('Test body')
       expect(response).to redirect_to(assigns(:post))
     end
 
     it 'renders page again with error if validaition fail' do
-      post :create, { params: { title: '', preview: '', body: '', category_id: '' } }
+      post :create, { params: { post: { title: '', preview: '', body: '', category_id: '' } } }
 
       expect(response).to render_template('new')
     end
@@ -61,7 +61,7 @@ RSpec.describe PostsController, type: :controller do
   describe 'PUT #update/:id' do
     it 'redirects to updated article if validation was true' do
       post = create(:post)
-      put :update, { params: { id: post.id, title: 'new title', preview: 'new preview', body: 'new body', category_id: '' } }
+      put :update, { params: { id: post.id, post: { title: 'new title', preview: 'new preview', body: 'new body', category_id: '' } } }
 
       expect(Post.find_by_id(post.id).body).to eq('new body')
       expect(response).to redirect_to(assigns(:post))
@@ -69,7 +69,7 @@ RSpec.describe PostsController, type: :controller do
 
     it 'should re-render edit template on failed update' do
       post = create(:post)
-      put :update, { params: { id: post.id, title: '', preview: 'new preview', body: 'new body', category_id: '' } }
+      put :update, { params: { id: post.id, post: { title: '', preview: 'new preview', body: 'new body', category_id: '' } } }
 
       expect(Post.find_by_id(post.id).body).not_to eq('new body')
       expect(response).to render_template('edit')
