@@ -6,3 +6,4 @@ tmp/
 config/initializers/secret_token.rb
 .idea
 coverage/
+.env
