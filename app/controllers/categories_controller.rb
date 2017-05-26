@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
         flash.now[ :danger ] = t('cat.errorAdd')
         render :add
       else
-        @categories = Category.where("id != #{@category.id}").order(:name)
+        free_categories
         flash.now[ :danger ] = t('cat.errorCreate')
         render :new
       end
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @categories = Category.where("id != #{@category.id}").order(:name)
+    free_categories
   end
 
   def update
@@ -47,7 +47,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_path, flash: { success:  t('cat.successUpdate') }
     else
-      @categories = Category.where("id != #{@category.id}").order(:name)
+      free_categories
       flash.now[ :danger ] = t('cat.errorUpdate')
       render :edit
     end
@@ -59,6 +59,10 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def free_categories
+    @categories = Category.where("id != #{@category.id}").order(:name)
+  end
 
   def set_category
     begin
