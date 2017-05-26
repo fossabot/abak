@@ -68,7 +68,7 @@ class CategoriesController < ApplicationController
     begin
       @category = Category.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
-      render layout: true, html: t('cat.notFound'), status: 404
+      render layout: true, html: { message: e}, status: 404
     end
   end
 
