@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get :search, controller: :main
   resources :posts
   #resources :categories
   resources :categories, constraints: { id: /.*/ }, path: '' do

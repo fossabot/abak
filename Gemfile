@@ -25,6 +25,8 @@ group :assets do
   # Slim for templates
   gem 'slim', '~> 3.0.7'
   gem 'slim-rails', '~> 3.1.0'
+  gem 'ransack', '~> 1.8.2'
+  gem 'jbuilder'
 end
 
 # Use unicorn as the web server
