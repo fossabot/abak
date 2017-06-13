@@ -7,3 +7,4 @@ config/initializers/secret_token.rb
 .idea
 coverage/
 .env
+node_modules
