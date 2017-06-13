@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get :search, controller: :main
+  resources :movies
+  resources :directors
   resources :posts
   #resources :categories
   resources :categories, constraints: { id: /.*/ }, path: '' do

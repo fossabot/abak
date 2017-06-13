@@ -6,7 +6,7 @@ json.movies do
 end
 
 json.directors do
-  json.array!(@diretors) do |director|
+  json.array!(@directors) do |director|
     json.name director.name
     json.url director_path(director)
   end
