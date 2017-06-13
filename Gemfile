@@ -56,6 +56,11 @@ group :development, :test do
   gem 'binding_of_caller', '~> 0.7.2'
   # Generate code coverate reports
   gem 'simplecov', '~> 0.13.0', require: false
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '~> 2.13'
+  gem 'selenium-webdriver'
 end
 
 gem 'rails_12factor', group: :production
