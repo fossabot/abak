@@ -108,7 +108,7 @@ RSpec.configure do |config|
 
   if ENV['RAILS_ENV'] == 'test'
     require 'simplecov'
-    SimpleCov.minimum_coverage 100
+    #SimpleCov.minimum_coverage 100
     SimpleCov.refuse_coverage_drop
     puts 'CodeCoverage Enabled'
     if ENV['CI']
