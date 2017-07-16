@@ -107,10 +107,19 @@ RSpec.configure do |config|
   end
 
   if ENV['RAILS_ENV'] == 'test'
-    puts 'required CodeCoverage'
     require 'simplecov'
-    SimpleCov.start 'rails'
-    require 'codecov'
-    SimpleCov.formatter = SimpleCov::Formatter::Codecov
+    SimpleCov.minimum_coverage 100
+    SimpleCov.refuse_coverage_drop
+    puts 'CodeCoverage Enabled'
+    if ENV['CI']
+      require 'codeclimate-test-reporter'
+      require 'codecov'
+      SimpleCov.start 'rails'
+      SimpleCov.formatter = SimpleCov::Formatter::Codecov
+    else
+      SimpleCov.start 'rails' do
+        add_filter 'some/path'
+      end
+    end
   end
 end

@@ -57,6 +57,7 @@ group :development, :test do
   # Generate code coverate reports
   gem 'simplecov', '~> 0.13.0', require: false
   gem 'codecov', '~> 0.1.10', require: false
+  gem 'codeclimate-test-reporter', '~> 1.0.8', require: false
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
