@@ -107,8 +107,10 @@ RSpec.configure do |config|
   end
 
   if ENV['RAILS_ENV'] == 'test'
+    puts 'required CodeCoverage'
     require 'simplecov'
     SimpleCov.start 'rails'
-    puts 'required simplecov'
+    require 'codecov'
+    SimpleCov.formatter = SimpleCov::Formatter::Codecov
   end
 end

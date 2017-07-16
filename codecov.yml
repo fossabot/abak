@@ -2,17 +2,14 @@ codecov:
   token: 7996b67d-66c1-4dae-b8d8-a6bd5183f5b8
   notify:
     require_ci_to_pass: yes
-
 coverage:
   precision: 2
   round: down
   range: "70...100"
-
   status:
     project: yes
     patch: yes
     changes: no
-
 parsers:
   gcov:
     branch_detection:

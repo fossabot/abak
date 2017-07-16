@@ -25,3 +25,6 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - RAILS_ENV=test bundle exec rspec
 #  - RAILS_ENV=test bundle exec rake db:seed
+addons:
+  code_climate:
+    repo_token: 3d3408f7ba327a5caf5c26d6332603a46be5120eb2d5aef3286ec2d5814f9d62
