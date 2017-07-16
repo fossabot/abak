@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/Mifrill/abak.svg?branch=master)](https://travis-ci.org/Mifrill/abak)
 [![Quality](http://img.shields.io/codeclimate/github/Mifrill/abak.svg)](https://codeclimate.com/github/Mifrill/abak)
+[![Coverage Status](https://img.shields.io/codeclimate/coverage/github/Mifrill/abak.svg)](https://codeclimate.com/github/mifrill/abak)
+[![codecov](https://codecov.io/gh/Mifrill/abak/branch/master/graph/badge.svg)](https://codecov.io/gh/Mifrill/abak)
 [![Dependency Status](https://gemnasium.com/badges/github.com/Mifrill/abak.svg)](https://gemnasium.com/github.com/Mifrill/abak)
 [![Inline docs](http://inch-ci.org/github/Mifrill/abak.svg?branch=master)](http://inch-ci.org/github/Mifrill/abak)
 
